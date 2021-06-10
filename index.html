@@ -7,16 +7,18 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div></div>
-        <input type="submit" id="new-book"value="New book">
+        <div id="button-display">
+            <input type="submit" id="display-form" class="button"value="Add a new book">
+        </div>
         <div id="form-popup">   
             <form class="form-container">
                 <label for="booktitle" id="bookTitleLabel">Title</label><br>
-                <input type="text" id="booktitle"><br>
+                <input type="text" id="booktitle" required><br>
                 <label for="author">Author</label><br>
-                <input type="text" id="author"><br>
+                <input type="text" id="author" required><br>
                 <label for="page">Pages</label><br>
-                <input type="text" id="page"><br>
+                <input type="text" id="page" required><br>
+                <input type="submit" id="save-book" class="button" value="Save"
             </form>
         </div>
         <div id="book-display">

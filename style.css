@@ -1,4 +1,4 @@
-#new-book {
+.button {
     background-color: #555;
     color: white;
     padding: 16px 20px;
@@ -11,6 +11,7 @@
 
 #form-popup {
     /* background-color: red; */
+    display: none;
     width: 350px;
     height: 200px;
     margin: 0 auto;
