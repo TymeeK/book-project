@@ -21,7 +21,7 @@
     
 }
 #book-display {
-    display: grid; 
+    /* display: grid;  */
     height: 750px;
     width: 750px;
     margin: 0 auto;

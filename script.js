@@ -62,28 +62,39 @@ function addBookToLibrary() {
 
 function addBookCard() {
     const bookDisplayDiv = document.querySelector("#book-display");
-    bookDisplayDiv.style.cssText = 
-        `grid-template-columns: repeat(6, 1fr);` +
-        `grid-template-rows: repeat(6, 1fr);`;
+    //Check to see if bookDisplayDiv has childnodes to remove
+    while (bookDisplayDiv.hasChildNodes) {
+        console.log(`First Child: ${bookDisplayDiv.firstChild.innerHTML}`);
+        bookDisplayDiv.removeChild(bookDisplayDiv.firstChild);
+    }
     
-    for (let i = 0; i < 36; i++) {
+    bookDisplayDiv.style.cssText = 
+        `grid-template-rows: repeat(${myLibrary.length}, 1fr);`;
+    
+    for (let i = 0; i < myLibrary.length; i++) {
+        const book = myLibrary[i];
         const cardDisplay = document.createElement("div");
+        
         cardDisplay.className = "grid-div";
-        cardDisplay.innerText = "Hello";
-        cardDisplay.style.cssText = `border: 1px solid black;`;
+        cardDisplay.innerHTML = 
+            `<b>Title:</b> ${book.title}<br><b>Author:</b> ${book.author}<br>
+            <b>Pages:</b> ${book.pages}`;
+        
+        cardDisplay.style.cssText = `border: 1px solid black;
+            font-size: 25px;`;
         bookDisplayDiv.appendChild(cardDisplay);
     }
-   
-    
 }
 
 function clickSaveButton() {
     addBookToLibrary();
-    
+    addBookCard();
 }
-
 
 displayFormButton.addEventListener("click", displayForm);
 saveButton.addEventListener("click", clickSaveButton);
 
-addBookCard();
+// const book = new Book("11/22/63", "Stephen King", 750, true);
+// const book2 = new Book("All the Light we Cannot See", "Anthony Doerr", 550, false);
+// myLibrary.push(book);
+// myLibrary.push(book2);
