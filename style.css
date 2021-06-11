@@ -20,7 +20,14 @@
 #form-container { 
     
 }
-
+#book-display {
+    display: grid; 
+    height: 750px;
+    width: 750px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 1px solid black;
+}
 form input {
     margin-top: 5px;
 }
