@@ -6,26 +6,37 @@
     cursor: pointer;
     opacity: 0.8;
     position: fixed;
+    top: 23px;
+    right: 50px;
     width: 280px;
 }
 
 #form-popup {
     /* background-color: red; */
     display: none;
+    position: fixed;
+    top: 15px;
+    right: 50px;
+    border: 3px solid #f1f1f1;
     width: 350px;
-    height: 200px;
+    height: 206px;
     margin: 0 auto;
 }
 
 #form-container { 
-    
+    max-width: 300px;
+    padding: 20px;
+    background-color: white;
 }
 #book-display {
     /* display: grid;  */
+    position: fixed;
+    top: 10px;
+    left: 10px;
     height: 750px;
     width: 750px;
-    margin: 0 auto;
-    margin-top: 50px;
+    /* margin: 0 auto;
+    margin-top: 50px; */
     border: 1px solid black;
 }
 form input {
@@ -34,4 +45,14 @@ form input {
 
 form label {
     font-weight: bold;
+}
+
+#save-book {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 280px;
 }
