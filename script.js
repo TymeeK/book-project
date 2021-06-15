@@ -65,16 +65,15 @@ function addBookCard() {
     while (bookDisplayDiv.hasChildNodes()) {
         bookDisplayDiv.removeChild(bookDisplayDiv.firstChild);
     }
-    const readButton = document.createElement("button");
-    const removeButton = document.createElement("button");
-    
+   
     bookDisplayDiv.style.cssText = 
         `grid-template-rows: repeat(${myLibrary.length}, 1fr);`;
     
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
         const cardDisplay = document.createElement("div");
-       
+        const readButton = document.createElement("button");
+        const removeButton = document.createElement("button");
 
         readButton.innerHTML = "Change read status"
         removeButton.innerHTML = "Remove book";
@@ -92,17 +91,32 @@ function addBookCard() {
         cardDisplay.style.cssText = `border-bottom: 1px solid black;
             font-size: 25px; background-color: #555; color: white;`;
         cardDisplay.dataset.number = i;
+        const dataNumber = cardDisplay.dataset.number;
         
         bookDisplayDiv.appendChild(cardDisplay);
         cardDisplay.appendChild(readButton);
         cardDisplay.appendChild(removeButton);
+        
+        removeButton.addEventListener("click", () => {
+            const allCards = document.querySelectorAll(".grid-div")
+            
+            allCards.forEach((card) => {
+                const cardToRemove = parseInt(card.getAttribute("data-number"));
+                if (parseInt(dataNumber) === cardToRemove) {
+                    myLibrary.splice(cardToRemove, 1);
+                    card.remove();
+                }
+            });
+        });
+
+        readButton.addEventListener("click", () => {
+            const readBook = document.querySelectorAll(".grid-div");
+            readBook.
+        });
     }
-    removeButton.addEventListener("click", removeCard);
 }
 
-function removeCard() {
-    console.log("Remove card")
-}
+
 
 function clickSaveButton() {
     addBookToLibrary();
