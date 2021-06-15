@@ -74,25 +74,15 @@ function addBookCard() {
         const cardDisplay = document.createElement("div");
         const readButton = document.createElement("button");
         const removeButton = document.createElement("button");
+        const readStatus = document.createElement("label");
 
         readButton.innerHTML = "Change read status"
         removeButton.innerHTML = "Remove book";
         cardDisplay.className = "grid-div";
-        cardDisplay.innerHTML = 
-            `<b>Title:</b> ${book.title}<br><b>Author:</b> ${book.author}<br>
-            <b>Pages:</b> ${book.pages}`;  
-
-        if (book.read) {
-            cardDisplay.innerHTML += `<br><b>Status:</b> Read<br>`;
-        }
-        else {
-            cardDisplay.innerHTML += `<br><b>Status:</b> Not read<br>`;
-        }
-        cardDisplay.style.cssText = `border-bottom: 1px solid black;
-            font-size: 25px; background-color: #555; color: white;`;
+     
         cardDisplay.dataset.number = i;
         const dataNumber = cardDisplay.dataset.number;
-        
+        changeReadStatus(book, cardDisplay);
         bookDisplayDiv.appendChild(cardDisplay);
         cardDisplay.appendChild(readButton);
         cardDisplay.appendChild(removeButton);
@@ -111,12 +101,37 @@ function addBookCard() {
 
         readButton.addEventListener("click", () => {
             const readBook = document.querySelectorAll(".grid-div");
-            readBook.
+            readBook.forEach(book => {
+                const bookIndex = parseInt(book.getAttribute("data-number"));
+                if (parseInt(dataNumber) === bookIndex) {
+                    const libraryIndex = myLibrary[dataNumber];
+                    const bookStatus = libraryIndex.read ? false : true; 
+                    libraryIndex.read = bookStatus;
+                    cardDisplay.innerHTML = ""
+                    changeReadStatus(libraryIndex, cardDisplay);
+                    cardDisplay.appendChild(readButton);
+                    cardDisplay.appendChild(removeButton);
+                }
+            })
         });
     }
 }
 
+function changeReadStatus(book, cardDisplay) {
 
+    cardDisplay.innerHTML = 
+    `<b>Title:</b> ${book.title}<br><b>Author:</b> ${book.author}<br>
+    <b>Pages:</b> ${book.pages}`;  
+    cardDisplay.style.cssText = `border-bottom: 1px solid black;
+    font-size: 25px; background-color: #555; color: white;`;
+    
+    if (book.read) {
+        cardDisplay.innerHTML += `<br><b>Status:</b> Read<br>`;
+    }
+    else {
+        cardDisplay.innerHTML += `<br><b>Status:</b> Not read<br>`;
+    }
+}
 
 function clickSaveButton() {
     addBookToLibrary();
