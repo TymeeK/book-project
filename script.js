@@ -9,15 +9,34 @@ const checkBox = document.querySelector("#check-read");
 const bookDisplayDiv = document.querySelector("#book-display");
 let formIsDisplayed = false;
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
-        return `${this.title} by ${this.author} ${this.pages} pages ${this.read}`;
+
+class Book {
+    #formIsDisplayed = false;
+    #displayFormButton = document.querySelector("#display-form");
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.info = function () {
+            return `${this.title} by ${this.author} ${this.pages} pages ${this.read}`;
+        }
+    }
+    displayForm() {
+        if (!this.#formIsDisplayed) {
+            
+        }
     }
 }
+// function Book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.info = function () {
+//         return `${this.title} by ${this.author} ${this.pages} pages ${this.read}`;
+//     }
+// }
 
 function displayForm() {
     if (!formIsDisplayed) {
